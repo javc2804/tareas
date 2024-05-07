@@ -1,5 +1,24 @@
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum eum dolorem
-  molestiae in asperiores sequi quisquam neque itaque pariatur, deleniti
-  quibusdam a aspernatur incidunt sit magni optio sunt perferendis magnam?
-</p>
+<div class="login-box">
+  <div class="login-box">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="username" required />
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required />
+      </mat-form-field> -->
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Iniciar
+      </button>
+    </form>
+  </div>
+</div>

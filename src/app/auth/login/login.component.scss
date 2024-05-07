@@ -1,0 +1,29 @@
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+button {
+  display: block;
+}
+
+.login-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* esto hace que el contenedor ocupe toda la altura de la pantalla */
+}
