@@ -11,8 +11,10 @@ export interface DialogData {
     <h2 mat-dialog-title>Confirmación</h2>
     <mat-dialog-content>{{ data.message }}</mat-dialog-content>
     <mat-dialog-actions>
-      <button mat-button mat-dialog-close>No</button>
-      <button mat-button [mat-dialog-close]="true">Sí</button>
+      <button mat-raised-button color="warn" mat-dialog-close>No</button>
+      <button mat-raised-button color="primary" [mat-dialog-close]="true">
+        Sí
+      </button>
     </mat-dialog-actions>
   `,
 })

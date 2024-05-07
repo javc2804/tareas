@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
 import {
   ConfirmDialogComponent,
   DialogData,
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +35,8 @@ export class LoginComponent implements OnInit {
       const { username } = this.loginForm.value;
       this.authService.login({ username }).subscribe(
         (success) => {
-          console.log('ss');
+          console.log(success);
+          this.router.navigate(['/home']);
         },
         (error) => {
           console.log('err');
@@ -44,15 +48,14 @@ export class LoginComponent implements OnInit {
 
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-              // Si el usuario elige crear una nueva cuenta, llama al servicio de registro
               this.authService.register({ username }).subscribe(
                 (success) => {
-                  console.log('ss');
+                  console.log(success);
+
                   // Maneja el éxito del registro aquí
                 },
                 (error) => {
                   console.log('err');
-                  // Maneja el error del registro aquí
                 }
               );
             }

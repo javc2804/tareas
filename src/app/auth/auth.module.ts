@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../components/ConfirmDialogComponent';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent, ConfirmDialogComponent],
@@ -16,6 +17,7 @@ import { ConfirmDialogComponent } from '../components/ConfirmDialogComponent';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatButtonModule,
   ],
   exports: [ConfirmDialogComponent],
   entryComponents: [ConfirmDialogComponent],
