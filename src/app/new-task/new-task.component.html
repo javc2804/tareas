@@ -1,9 +1,18 @@
 <div class="form-section form-container">
   <h2>Agregar nueva tarea</h2>
-  <form (submit)="onSubmit()">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <mat-form-field appearance="fill">
       <mat-label>Nombre de la tarea</mat-label>
-      <input matInput [(ngModel)]="task.title" name="title" required />
+      <input
+        matInput
+        [(ngModel)]="task.title"
+        #title="ngModel"
+        name="title"
+        required
+      />
+      <mat-error *ngIf="title.invalid && f.submitted">
+        El nombre de la tarea es requerido.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -11,9 +20,13 @@
       <textarea
         matInput
         [(ngModel)]="task.description"
+        #description="ngModel"
         name="description"
         required
       ></textarea>
+      <mat-error *ngIf="description.invalid && f.submitted">
+        La descripción de la tarea es requerida.
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -21,10 +34,14 @@
       <input
         matInput
         [(ngModel)]="formattedDate"
+        #creationDate="ngModel"
         name="creationDate"
         type="text"
         required
       />
+      <mat-error *ngIf="creationDate.invalid && f.submitted">
+        La fecha de creación es requerida.
+      </mat-error>
     </mat-form-field>
 
     <mat-checkbox [(ngModel)]="task.status" name="status"

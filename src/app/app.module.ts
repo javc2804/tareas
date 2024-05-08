@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatIconModule } from '@angular/material/icon';
 import { TaskService } from './services/task.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TaskService } from './services/task.service';
     MatCheckboxModule,
     MatIconModule,
     FormsModule,
+    MatSnackBarModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent],

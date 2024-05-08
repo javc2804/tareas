@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Task } from '../models/task';
 import { formatDate } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-new-task',
@@ -9,13 +11,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./new-task.component.scss'],
 })
 export class NewTaskComponent implements OnInit {
-  task: Task = {
-    _id: 0,
-    title: '',
-    description: '',
-    createdAt: new Date(),
-    status: false,
-  };
+  task: Task = this.getInitialTaskState();
 
   formattedDate: string = formatDate(
     this.task.createdAt,
@@ -23,7 +19,6 @@ export class NewTaskComponent implements OnInit {
     'en-US'
   );
   isEditing: boolean = false;
-  @Output() taskAdded = new EventEmitter();
   @Output() taskUpdated = new EventEmitter();
   @Input() set editTask(task: Task | undefined) {
     if (task) {
@@ -46,38 +41,68 @@ export class NewTaskComponent implements OnInit {
     }
   }
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.isEditing = false;
   }
 
-  onSubmit() {
-    if (this.isEditing) {
-      if (this.task._id !== undefined) {
-        this.taskService.editTask(this.task._id, this.task).subscribe(
+  getInitialTaskState(): Task {
+    return {
+      _id: 0,
+      title: '',
+      description: '',
+      createdAt: new Date(),
+      status: false,
+    };
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      if (this.isEditing) {
+        if (this.task._id !== undefined) {
+          this.taskService.editTask(this.task._id, this.task).subscribe(
+            (response) => {
+              console.log(response);
+              this.taskUpdated.emit();
+              this.snackBar.open('Tarea actualizada correctamente', 'Close', {
+                duration: 3000,
+                verticalPosition: 'top',
+                horizontalPosition: 'right',
+              });
+              form.resetForm(this.getInitialTaskState()); // Reset the form
+              this.isEditing = false; // Reset the editing state
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+        } else {
+          console.error('Task ID is undefined');
+        }
+      } else {
+        delete this.task._id;
+        this.taskService.addTask(this.task).subscribe(
           (response) => {
             console.log(response);
             this.taskUpdated.emit();
+            this.snackBar.open('Tarea creada correctamente', 'Close', {
+              duration: 3000,
+              verticalPosition: 'top',
+              horizontalPosition: 'right',
+            });
+            form.resetForm(this.getInitialTaskState()); // Reset the form
           },
           (error) => {
             console.error(error);
           }
         );
-      } else {
-        console.error('Task ID is undefined');
       }
     } else {
-      delete this.task._id;
-      this.taskService.addTask(this.task).subscribe(
-        (response) => {
-          console.log(response);
-          this.taskAdded.emit();
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
+      console.error('Formulario inválido');
     }
   }
 }
