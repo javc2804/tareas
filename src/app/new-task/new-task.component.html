@@ -33,18 +33,20 @@
       <mat-label>Fecha de creación</mat-label>
       <input
         matInput
-        [(ngModel)]="formattedDate"
-        #creationDate="ngModel"
-        name="creationDate"
-        type="text"
+        [matDatepicker]="picker"
+        [(ngModel)]="task.createdAt"
+        #createdAt="ngModel"
+        name="createdAt"
         required
       />
-      <mat-error *ngIf="creationDate.invalid && f.submitted">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="createdAt.invalid && f.submitted">
         La fecha de creación es requerida.
       </mat-error>
     </mat-form-field>
 
-    <mat-checkbox [(ngModel)]="task.status" name="status"
+    <mat-checkbox [(ngModel)]="task.status" name="status" color="primary"
       >Completado</mat-checkbox
     >
 

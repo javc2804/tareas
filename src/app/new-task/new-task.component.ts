@@ -66,7 +66,6 @@ export class NewTaskComponent implements OnInit {
         if (this.task._id !== undefined) {
           this.taskService.editTask(this.task._id, this.task).subscribe(
             (response) => {
-              console.log(response);
               this.taskUpdated.emit();
               this.snackBar.open('Tarea actualizada correctamente', 'Close', {
                 duration: 3000,

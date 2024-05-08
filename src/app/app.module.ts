@@ -21,6 +21,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { TaskService } from './services/task.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FormsModule,
     MatSnackBarModule,
     MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent],
