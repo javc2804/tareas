@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+}
+
+.form-section {
+  flex: 1;
+}
+
+.tasks-section {
+  flex: 1;
+}
+
+app-new-task,
+app-task-list {
+  width: 80%; /* Ajusta este valor según tus necesidades */
+}

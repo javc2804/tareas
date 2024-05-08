@@ -1,0 +1,26 @@
+.task-list-container {
+  background-color: #f0f0f0; /* Fondo gris */
+  padding: 20px; /* Espacio alrededor del componente de listar tareas */
+  border-radius: 5px; /* Bordes redondeados */
+  max-width: 500px; /* Ancho máximo del componente de listar tareas */
+  margin: 0 auto; /* Centrar el componente de listar tareas */
+  margin-left: 30%; /* Empujar el componente de listar tareas hacia la derecha */
+  margin-top: 98%; /* Empujar el componente de listar tareas hacia abajo */
+}
+
+.move-left {
+  margin-left: 0; /* Ajusta este valor según tus necesidades */
+}
+
+.task-list-container mat-list-item {
+  margin-bottom: 10px; /* Espacio entre los elementos de la lista */
+  margin-left: 80%; /* Ajusta este valor según tus necesidades */
+}
+
+.form-section {
+  margin-top: 10%;
+}
+
+table.mat-elevation-z8 {
+  margin-top: 18%;
+}

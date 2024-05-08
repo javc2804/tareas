@@ -10,8 +10,23 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
+import { FormsModule } from '@angular/forms'; // Importa FormsModule
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { NewTaskComponent } from './new-task/new-task.component';
+import { TaskListComponent } from './task-list/task-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { TaskService } from './services/task.service';
+
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NewTaskComponent,
+    TaskListComponent,
+  ],
   imports: [
     BrowserModule,
     AuthModule,
@@ -21,8 +36,14 @@ import { HomeComponent } from './home/home.component';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
+    FormsModule,
+    MatButtonModule,
+    MatListModule,
+    MatTableModule,
+    MatCheckboxModule,
+    MatIconModule,
   ],
-  providers: [],
+  providers: [TaskService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

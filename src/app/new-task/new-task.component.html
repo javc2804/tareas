@@ -1,0 +1,38 @@
+<div class="form-section form-container">
+  <h2>Agregar nueva tarea</h2>
+  <form (submit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre de la tarea</mat-label>
+      <input matInput [(ngModel)]="task.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Descripción de la tarea</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="task.description"
+        name="description"
+        required
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de creación</mat-label>
+      <input
+        matInput
+        [(ngModel)]="task.createdAt"
+        name="creationDate"
+        type="date"
+        required
+      />
+    </mat-form-field>
+
+    <mat-checkbox [(ngModel)]="task.status" name="status"
+      >Completado</mat-checkbox
+    >
+
+    <button mat-raised-button color="primary" type="submit">
+      Agregar tarea
+    </button>
+  </form>
+</div>
