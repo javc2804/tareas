@@ -42,6 +42,7 @@ import { TaskService } from './services/task.service';
     MatTableModule,
     MatCheckboxModule,
     MatIconModule,
+    FormsModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent],

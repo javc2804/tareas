@@ -1,12 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TaskService } from '../services/task.service';
 import { Subscription } from 'rxjs';
-interface Task {
-  createdAt: Date;
-  title: string;
-  description: string;
-  status: boolean; // Cambia el tipo de 'status' a 'boolean'
-}
+import { Task } from '../models/task';
 
 @Component({
   selector: 'app-task-list',
@@ -23,12 +18,13 @@ export class TaskListComponent implements OnInit {
   ];
   tasks: Task[] = [];
   private taskCreatedSubscription: Subscription = Subscription.EMPTY;
+
+  @Output() taskToEdit = new EventEmitter<Task>();
+
   constructor(private taskService: TaskService) {}
 
   ngOnInit() {
-    this.taskService.getTasks().subscribe((tasks) => {
-      this.tasks = tasks;
-    });
+    this.loadTasks();
 
     this.taskCreatedSubscription = this.taskService.taskCreated.subscribe(
       (newTask) => {
@@ -41,10 +37,17 @@ export class TaskListComponent implements OnInit {
     this.taskCreatedSubscription.unsubscribe();
   }
 
-  onTaskClick(task: Task) {
-    // handle task click
+  loadTasks() {
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.tasks = tasks;
+    });
   }
 
-  editTask(task: Task) {}
+  onTaskClick(task: Task) {}
+
+  editTask(task: Task) {
+    const taskCopy = Object.assign({}, task);
+    this.taskToEdit.emit(taskCopy);
+  }
   deleteTask(task: Task) {}
 }

@@ -1,4 +1,8 @@
 <div class="container">
-  <app-new-task></app-new-task>
-  <app-task-list></app-task-list>
+  <app-new-task
+    [editTask]="selectedTask"
+    (taskAdded)="loadTasks()"
+    (taskUpdated)="loadTasks()"
+  ></app-new-task>
+  <app-task-list (taskToEdit)="selectedTask = $event"></app-task-list>
 </div>

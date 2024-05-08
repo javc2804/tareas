@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { TaskListComponent } from '../task-list/task-list.component';
+import { Task } from '../models/task';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
+  @ViewChild(TaskListComponent) taskList!: TaskListComponent;
+  selectedTask: Task = {
+    _id: 0,
+    title: '',
+    description: '',
+    createdAt: new Date(),
+    status: false,
+  };
+
   constructor() {}
+
+  loadTasks() {
+    this.taskList.loadTasks();
+  }
 }
