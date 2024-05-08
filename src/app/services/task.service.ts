@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Task } from '../models/task';
 import { Observable } from 'rxjs';
 import { environment } from '../environment/environment'; // Importa tu configuración de entorno
@@ -13,8 +13,12 @@ export class TaskService {
   private apiUrl = `${environment.apiUrl}/task`;
   constructor(private http: HttpClient) {}
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.apiUrl);
+  getTasks(pageIndex: number, pageSize: number): Observable<Task[]> {
+    const params = new HttpParams()
+      .set('pageIndex', pageIndex.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Task[]>(this.apiUrl, { params });
   }
 
   addTask(task: Task): Observable<Task> {
