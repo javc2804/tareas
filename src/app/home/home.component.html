@@ -1,8 +1,13 @@
 <div class="container">
-  <app-new-task
-    [editTask]="selectedTask"
-    (taskAdded)="loadTasks()"
-    (taskUpdated)="loadTasks()"
-  ></app-new-task>
-  <app-task-list (taskToEdit)="selectedTask = $event"></app-task-list>
+  <button mat-button class="logout-button" (click)="logout()">
+    Cerrar sesión
+  </button>
+  <div class="task-section">
+    <app-new-task
+      [editTask]="selectedTask"
+      (taskAdded)="loadTasks()"
+      (taskUpdated)="loadTasks()"
+    ></app-new-task>
+    <app-task-list (taskToEdit)="selectedTask = $event"></app-task-list>
+  </div>
 </div>

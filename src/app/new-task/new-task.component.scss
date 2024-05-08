@@ -1,11 +1,13 @@
 .form-container {
+  display: flex; /* Añade esto */
+  flex-direction: column; /* Añade esto */
+  justify-content: center; /* Añade esto */
+  align-items: center; /* Añade esto */
   background-color: #f0f0f0; /* Fondo gris */
   padding: 20px; /* Espacio alrededor del formulario */
   border-radius: 5px; /* Bordes redondeados */
   max-width: 500px; /* Ancho máximo del formulario */
   margin: 0 auto; /* Centrar el formulario */
-  margin-left: 30%; /* Empujar el formulario hacia la derecha */
-  margin-top: 20%; /* Empujar el formulario hacia abajo */
 }
 
 .form-container mat-form-field,

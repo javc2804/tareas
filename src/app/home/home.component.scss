@@ -1,16 +1,50 @@
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.form-section {
+.logout-button {
+  align-self: flex-end;
+  margin-bottom: 20px;
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.task-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+app-new-task {
   flex: 1;
+  max-width: 50%; /* Ajusta este valor según tus necesidades */
+  margin-top: -10px; /* Ajusta este valor según tus necesidades */
 }
 
-.tasks-section {
-  flex: 1;
-}
-
-app-new-task,
 app-task-list {
-  width: 80%; /* Ajusta este valor según tus necesidades */
+  flex: 1;
+  max-width: 50%; /* Ajusta este valor según tus necesidades */
+}
+
+/* Cambia la disposición de los elementos en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .task-section {
+    flex-direction: column;
+    align-items: stretch; /* Cambia esto a stretch */
+  }
+
+  app-new-task,
+  app-task-list {
+    max-width: 100%;
+  }
+
+  app-new-task {
+    display: flex; /* Añade esto */
+    flex-direction: column; /* Añade esto */
+    align-items: center; /* Añade esto */
+    justify-content: center; /* Añade esto */
+  }
 }
