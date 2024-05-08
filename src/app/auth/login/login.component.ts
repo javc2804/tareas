@@ -26,16 +26,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
   login(): void {
     if (this.loginForm.valid) {
-      const { username } = this.loginForm.value;
-      this.authService.login({ username }).subscribe(
+      const { email } = this.loginForm.value;
+      this.authService.login({ email }).subscribe(
         (success) => {
-          console.log(success);
           this.router.navigate(['/home']);
         },
         (error) => {
@@ -48,12 +47,8 @@ export class LoginComponent implements OnInit {
 
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
-              this.authService.register({ username }).subscribe(
-                (success) => {
-                  console.log(success);
-
-                  // Maneja el éxito del registro aquí
-                },
+              this.authService.register({ email }).subscribe(
+                (success) => {},
                 (error) => {
                   console.log('err');
                 }

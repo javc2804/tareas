@@ -5,7 +5,7 @@ import { catchError, throwError, tap } from 'rxjs';
 import { Router } from '@angular/router'; // Importa Router
 
 interface Credentials {
-  username: string;
+  email: string;
 }
 
 @Injectable({
@@ -13,14 +13,12 @@ interface Credentials {
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {
-    // Inyecta Router
-    // Al iniciar, establece el estado de autenticación basado en el almacenamiento local
     this.setAuthenticated(localStorage.getItem('isAuthenticated') === 'true');
   }
 
   login(credentials: Credentials) {
     return this.http
-      .get(`${environment.apiUrl}/auth/users/${credentials.username}`)
+      .get(`${environment.apiUrl}/auth/users/${credentials.email}`)
       .pipe(
         tap((response) => {
           if (response) {
@@ -35,17 +33,19 @@ export class AuthService {
   }
 
   register(credentials: Credentials) {
-    return this.http.post(`${environment.apiUrl}/auth/user/`, credentials).pipe(
-      catchError((error) => {
-        return throwError('Something bad happened; please try again later.');
-      })
-    );
+    return this.http
+      .post(`${environment.apiUrl}/auth/users/`, credentials)
+      .pipe(
+        catchError((error) => {
+          return throwError('Something bad happened; please try again later.');
+        })
+      );
   }
 
   logout() {
     this.setAuthenticated(false);
     localStorage.removeItem('isAuthenticated');
-    this.router.navigate(['/auth/login']); // Redirige al usuario a /auth/login
+    this.router.navigate(['/auth/login']);
   }
 
   isAuthenticated(): boolean {
