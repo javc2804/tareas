@@ -52,7 +52,7 @@ export class NewTaskComponent implements OnInit {
 
   getInitialTaskState(): Task {
     return {
-      _id: 0,
+      id: 0,
       title: '',
       description: '',
       createdAt: new Date(),
@@ -63,8 +63,8 @@ export class NewTaskComponent implements OnInit {
   onSubmit(form: NgForm) {
     if (form.valid) {
       if (this.isEditing) {
-        if (this.task._id !== undefined) {
-          this.taskService.editTask(this.task._id, this.task).subscribe(
+        if (this.task.id !== undefined) {
+          this.taskService.editTask(this.task.id, this.task).subscribe(
             (response) => {
               this.taskUpdated.emit();
               this.snackBar.open('Tarea actualizada correctamente', 'Close', {
@@ -83,7 +83,7 @@ export class NewTaskComponent implements OnInit {
           console.error('Task ID is undefined');
         }
       } else {
-        delete this.task._id;
+        delete this.task.id;
         this.taskService.addTask(this.task).subscribe(
           (response) => {
             console.log(response);

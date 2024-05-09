@@ -74,7 +74,9 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    if (task._id !== undefined) {
+    console.log(task);
+
+    if (task.id !== undefined) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         data: {
           message: '¿Estás seguro de que quieres eliminar esta tarea?',
@@ -84,7 +86,7 @@ export class TaskListComponent implements OnInit {
       dialogRef.afterClosed().subscribe((result) => {
         if (result) {
           // Use a type assertion to tell TypeScript that task._id is not undefined
-          this.taskService.deleteTask(task._id as number).subscribe(() => {
+          this.taskService.deleteTask(task.id as number).subscribe(() => {
             // Remove the task from the tasks array
             const index = this.tasks.indexOf(task);
             if (index > -1) {

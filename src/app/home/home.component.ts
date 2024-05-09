@@ -11,7 +11,7 @@ import { AuthService } from '../auth/auth.service'; // Importa AuthService
 export class HomeComponent {
   @ViewChild(TaskListComponent) taskList!: TaskListComponent;
   selectedTask: Task = {
-    _id: 0,
+    id: 0,
     title: '',
     description: '',
     createdAt: new Date(),

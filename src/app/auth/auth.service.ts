@@ -17,29 +17,25 @@ export class AuthService {
   }
 
   login(credentials: Credentials) {
-    return this.http
-      .get(`${environment.apiUrl}/auth/users/${credentials.email}`)
-      .pipe(
-        tap((response) => {
-          if (response) {
-            this.setAuthenticated(true);
-          }
-        }),
-        catchError((error) => {
-          this.setAuthenticated(false);
-          return throwError('Something bad happened; please try again later.');
-        })
-      );
+    return this.http.post(`${environment.apiUrl}/auth/login`, credentials).pipe(
+      tap((response: any) => {
+        if (response.ok) {
+          this.setAuthenticated(true);
+        }
+      }),
+      catchError((error) => {
+        this.setAuthenticated(false);
+        return throwError('Something bad happened; please try again later.');
+      })
+    );
   }
 
   register(credentials: Credentials) {
-    return this.http
-      .post(`${environment.apiUrl}/auth/users/`, credentials)
-      .pipe(
-        catchError((error) => {
-          return throwError('Something bad happened; please try again later.');
-        })
-      );
+    return this.http.post(`${environment.apiUrl}/auth/user/`, credentials).pipe(
+      catchError((error) => {
+        return throwError('Something bad happened; please try again later.');
+      })
+    );
   }
 
   logout() {
