@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class TaskService {
   taskCreated = new Subject<Task>();
-  private apiUrl = `${environment.apiUrl}/task`;
+  private apiUrl = `${environment.apiUrl}/tasks`;
   constructor(private http: HttpClient) {}
 
   getTasks(pageIndex: number, pageSize: number): Observable<Task[]> {

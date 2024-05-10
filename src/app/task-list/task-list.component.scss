@@ -11,6 +11,10 @@
   width: 100%; /* Añade esto */
 }
 
+:host ::ng-deep th.mat-header-cell {
+  font-weight: bold;
+}
+
 table.mat-elevation-z8 {
   width: 100%;
   margin-top: 18%;

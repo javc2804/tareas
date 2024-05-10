@@ -4,10 +4,7 @@ import { AuthService } from '../auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import {
-  ConfirmDialogComponent,
-  DialogData,
-} from '../../components/ConfirmDialogComponent';
+import { ConfirmDialogComponent } from '../../components/ConfirmDialogComponent';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +32,7 @@ export class LoginComponent implements OnInit {
       const { email } = this.loginForm.value;
       this.authService.login({ email }).subscribe(
         (success) => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['home']);
         },
         (error) => {
           console.log('err');
@@ -48,7 +45,23 @@ export class LoginComponent implements OnInit {
           dialogRef.afterClosed().subscribe((result) => {
             if (result) {
               this.authService.register({ email }).subscribe(
-                (success) => {},
+                (success: any) => {
+                  console.log('success', success);
+
+                  // Verifica si success.ok es verdadero antes de navegar a 'home'
+                  if (success.ok) {
+                    this.authService.login({ email }).subscribe(
+                      (success) => {
+                        if (success.ok) {
+                          this.router.navigate(['home']);
+                        }
+                      },
+                      (error) => {
+                        console.log('err');
+                      }
+                    );
+                  }
+                },
                 (error) => {
                   console.log('err');
                 }
