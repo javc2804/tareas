@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Task } from '../models/task';
 import { Observable } from 'rxjs';
-import { environment } from '../environment/environment'; // Importa tu configuración de entorno
+import { environment } from '../environment/environment';
 import { Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 @Injectable({

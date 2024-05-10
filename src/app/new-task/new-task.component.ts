@@ -72,8 +72,8 @@ export class NewTaskComponent implements OnInit {
                 verticalPosition: 'top',
                 horizontalPosition: 'right',
               });
-              form.resetForm(this.getInitialTaskState()); // Reset the form
-              this.isEditing = false; // Reset the editing state
+              form.resetForm(this.getInitialTaskState());
+              this.isEditing = false;
             },
             (error) => {
               console.error(error);
@@ -93,7 +93,7 @@ export class NewTaskComponent implements OnInit {
               verticalPosition: 'top',
               horizontalPosition: 'right',
             });
-            form.resetForm(this.getInitialTaskState()); // Reset the form
+            form.resetForm(this.getInitialTaskState());
           },
           (error) => {
             console.error(error);

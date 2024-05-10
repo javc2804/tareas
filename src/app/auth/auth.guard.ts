@@ -6,7 +6,7 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service'; // Asegúrate de tener un servicio de autenticación
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const isAuthenticated = this.authService.isAuthenticated(); // Asegúrate de tener un método isAuthenticated en tu servicio de autenticación
+    const isAuthenticated = this.authService.isAuthenticated();
     if (isAuthenticated) {
       return true;
     } else {

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../environment/environment';
 import { catchError, throwError, tap } from 'rxjs';
-import { Router } from '@angular/router'; // Importa Router
+import { Router } from '@angular/router';
 
 interface Credentials {
   email: string;

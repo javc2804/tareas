@@ -46,9 +46,6 @@ export class LoginComponent implements OnInit {
             if (result) {
               this.authService.register({ email }).subscribe(
                 (success: any) => {
-                  console.log('success', success);
-
-                  // Verifica si success.ok es verdadero antes de navegar a 'home'
                   if (success.ok) {
                     this.authService.login({ email }).subscribe(
                       (success) => {

@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { TaskListComponent } from '../task-list/task-list.component';
 import { Task } from '../models/task';
-import { AuthService } from '../auth/auth.service'; // Importa AuthService
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -18,13 +18,13 @@ export class HomeComponent {
     status: false,
   };
 
-  constructor(private authService: AuthService) {} // Inyecta AuthService
+  constructor(private authService: AuthService) {}
 
   loadTasks() {
     this.taskList.loadTasks();
   }
 
   logout() {
-    this.authService.logout(); // Llama al método logout de AuthService
+    this.authService.logout();
   }
 }
