@@ -4,7 +4,7 @@
   </button>
   <div class="task-section">
     <app-new-task
-      [editTask]="selectedTask"
+      [taskToEdit]="selectedTask"
       (taskAdded)="loadTasks()"
       (taskUpdated)="loadTasks()"
     ></app-new-task>

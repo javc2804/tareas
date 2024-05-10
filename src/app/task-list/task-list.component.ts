@@ -70,8 +70,6 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
-    console.log(task);
-
     if (task.id !== undefined) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         data: {
