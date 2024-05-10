@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "netlify": "ng build --prod --aot --configuration=production --base-href / && cp src/_redirects dist/tareas/"
+    "netlify": "ng build --configuration production --base-href / && cp src/_redirects dist/tareas/"
   },
   "private": true,
   "dependencies": {
