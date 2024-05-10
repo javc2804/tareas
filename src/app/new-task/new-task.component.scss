@@ -1,22 +1,22 @@
 .form-container {
-  display: flex; /* Añade esto */
-  flex-direction: column; /* Añade esto */
-  justify-content: center; /* Añade esto */
-  align-items: center; /* Añade esto */
-  background-color: #f0f0f0; /* Fondo gris */
-  padding: 20px; /* Espacio alrededor del formulario */
-  border-radius: 5px; /* Bordes redondeados */
-  max-width: 500px; /* Ancho máximo del formulario */
-  margin: 0 auto; /* Centrar el formulario */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .form-container mat-form-field,
 .form-container mat-checkbox {
-  width: 100%; /* Hacer que los campos de entrada y el checkbox ocupen todo el ancho disponible */
-  margin-bottom: 20px; /* Espacio entre los elementos del formulario */
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .form-container button {
-  display: block; /* Hacer que el botón sea un bloque */
-  margin: 0 auto; /* Centrar el botón */
+  display: block;
+  margin: 0 auto;
 }

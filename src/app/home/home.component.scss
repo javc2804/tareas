@@ -28,37 +28,10 @@ app-task-list {
   max-width: 50%;
 }
 
-/* Cambia la disposición de los elementos en pantallas más pequeñas */
 @media (max-width: 768px) {
   .task-section {
     flex-direction: column;
     align-items: stretch;
-  }
-
-  app-new-task,
-  app-task-list {
-    max-width: 100%;
-  }
-
-  app-new-task {
-    order: 1; /* Añade esto */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  app-task-list {
-    order: 2; /* Añade esto */
-  }
-}
-
-/* Cambia la disposición de los elementos en pantallas medianas */
-@media (min-width: 769px) and (max-width: 1024px) {
-  task-section {
-    flex-direction: column;
-    align-items: center; /* Añade esto */
-    justify-content: center; /* Añade esto */
   }
 
   app-new-task,
@@ -79,7 +52,31 @@ app-task-list {
   }
 }
 
-/* Cambia la disposición de los elementos en pantallas grandes */
+@media (min-width: 769px) and (max-width: 1024px) {
+  task-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  app-new-task,
+  app-task-list {
+    max-width: 100%;
+  }
+
+  app-new-task {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  app-task-list {
+    order: 2;
+  }
+}
+
 @media (min-width: 1025px) {
   .task-section {
     flex-direction: row;
