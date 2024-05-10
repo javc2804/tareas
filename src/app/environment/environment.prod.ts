@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: process.env['API_URL'] || 'fallback-url',
+  apiUrl: 'https://tareas-backend-zqi7.onrender.com/',
 };
