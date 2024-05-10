@@ -1,5 +1,5 @@
 // environment.prod.ts
 export const environment = {
   production: false,
-  apiUrl: 'https://my-production-api.com',
+  apiUrl: 'https://tareas-backend-zqi7.onrender.com/',
 };
