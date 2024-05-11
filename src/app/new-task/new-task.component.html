@@ -2,7 +2,7 @@
   <h2>Agregar nueva tarea</h2>
   <form (ngSubmit)="onSubmit(f)" #f="ngForm">
     <mat-form-field appearance="fill">
-      <mat-label>Nombre de la tarea</mat-label>
+      <mat-label>Título de la tarea</mat-label>
       <input
         matInput
         [(ngModel)]="task.title"
