@@ -1,27 +1,31 @@
-# Tareas
+# Gestor de Tareas
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+Este es un proyecto para gestionar tareas. Permite crear, eliminar, editar y marcar tareas como completadas. Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) versión 15.2.11.
 
-## Development server
+## Tecnologías utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 15
+- Angular Material
+- SCSS
+- Firestore como base de datos
 
-## Code scaffolding
+## Decisiones de diseño
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Se decidió utilizar Angular debido a su robusto sistema de componentes y su integración con TypeScript, lo que permite un desarrollo más seguro y predecible. Angular Material se utilizó para proporcionar una interfaz de usuario moderna y responsive.
 
-## Build
+SCSS se utilizó como preprocesador de CSS debido a sus características avanzadas como variables, anidamiento y mixins que hacen que el código CSS sea más reutilizable y fácil de mantener.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Firestore se eligió como base de datos debido a su escalabilidad, su modelo de datos en tiempo real y su integración con otros productos de Firebase.
 
-## Running unit tests
+## Configuración del entorno
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Las variables de entorno se definen en los archivos `environment.ts` y `environment.prod.ts`. Estos archivos contienen la configuración para los entornos de desarrollo y producción, respectivamente, incluyendo la URL de la API y la configuración de Firestore.
 
-## Running end-to-end tests
+Por favor, ten en cuenta que `environment.prod.ts` debe ser creado localmente y no se incluye en el control de versiones debido a que contiene variables sensibles.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Instrucciones de ejecución
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Clona el repositorio
+2. Ejecuta `npm install` para instalar las dependencias
+3. Crea un archivo `environment.prod.ts` en la carpeta `environments` con tus variables de entorno
+4. Ejecuta `ng serve` para iniciar el servidor de desarrollo. Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias alguno de los archivos de origen.
