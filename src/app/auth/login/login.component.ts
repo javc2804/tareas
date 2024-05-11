@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']);
         },
         (error) => {
-          console.log('err');
           const dialogRef = this.dialog.open(ConfirmDialogComponent, {
             data: {
               message: 'Usuario no encontrado. ¿Deseas crear una nueva cuenta?',
@@ -53,15 +52,11 @@ export class LoginComponent implements OnInit {
                           this.router.navigate(['home']);
                         }
                       },
-                      (error) => {
-                        console.log('err');
-                      }
+                      (error) => {}
                     );
                   }
                 },
-                (error) => {
-                  console.log('err');
-                }
+                (error) => {}
               );
             }
           });
